@@ -1,8 +1,8 @@
 import { IDistributionRepository } from '../../domain/repositories/IDistributionRepository.js';
 import { Distribution } from '../../domain/entities/Distribution.js';
 
-// Usar ruta relativa para que funcione con el proxy de Vite
-const API_URL = '/api';
+// En desarrollo usa proxy de Vite, en producción usa la URL completa del backend
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 export class HttpDistributionRepository extends IDistributionRepository {
   async save(distribution) {

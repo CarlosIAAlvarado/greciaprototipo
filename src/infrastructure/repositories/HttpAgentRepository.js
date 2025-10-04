@@ -1,8 +1,8 @@
 import { IAgentRepository } from '../../domain/repositories/IAgentRepository.js';
 import { Agent } from '../../domain/entities/Agent.js';
 
-// Usar ruta relativa para que funcione con el proxy de Vite
-const API_URL = '/api';
+// En desarrollo usa proxy de Vite, en producción usa la URL completa del backend
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 export class HttpAgentRepository extends IAgentRepository {
   async getAll() {
